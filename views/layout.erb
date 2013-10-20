@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      body {
+        font: 13px 'Helvetica Neue',Helvetica,Arial Geneva,sans-serif;
+      }
+
+      a, a:link, a:visited, a:active {
+        color: #000;
+        text-decoration: none;
+        border-bottom: 1px solid #CCC;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      article {
+        display: inline-block;
+        padding: 10px;
+        margin: 10px;
+        border: 5px solid #000;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        list-style: none;
+        margin-bottom: 5px;
+      }
+
+      li section {
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .name {
+        width: 100px;
+      }
+
+      .url {
+        width: 150px;
+      }
+
+      .actions {
+        width: 50px;
+        text-align: right;
+      }
+
+      .remove {
+        display: none;
+      }
+
+      .actions:hover .remove {
+        display: block;
+      }
+
+      .actions:hover .hits {
+        display: none;
+      }
+
+      hr {
+        background: 0;
+        border: 0;
+        border-bottom: 1px solid #CCC;
+        margin: 10px 0;
+      }
+
+      button {
+        height: 21px;
+      }
+
+      input {
+        width: 100px;
+        padding: 3px;
+
+        border: 1px solid #BBB;
+        border-top-color: #999;
+        box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+      }
+
+      input:focus {
+        border: 1px solid #5695DB;
+        outline: none;
+        -webkit-box-shadow: inset 0 1px 2px #DDD, 0px 0 5px #5695DB;
+        -moz-box-shadow: 0 0 5px #5695db;
+        box-shadow: inset 0 1px 2px #DDD, 0px 0 5px #5695DB;
+      }
+    </style>
+
+    <link rel="search" title="Go" href="/links/opensearch.xml" type="application/opensearchdescription+xml"/>
+    <title>go</title>
+  </head>
+  <body>
+    <article><%= yield %></article>
+  </body>
+</html>
