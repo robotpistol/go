@@ -215,37 +215,6 @@ __END__
     </body>
   </html>
 
-@@ index
-  <form method="post" action="/links">
-    <input type="text" name="name" placeholder="Name" required>
-    <input type="url" name="url" placeholder="URL" required>
-    <button>Create</button>
-  </form>
-
-  <hr />
-
-  <ul>
-    <% @links.each do |link| %>
-      <li>
-        <section class="name">
-          <a href="/<%= link.name %>"><%= link.name %></a>
-        </section>
-
-        <section class="url" title="<%= link.url %>"><%= link.url %></section>
-
-        <section class="actions">
-          <span class="hits">(<%= link.hits %>)</span>
-
-          <span class="remove">
-            <a href="/links/<%= link.id %>/remove" onclick="return confirm('Are you sure?');" title="remove">X</a>
-          </span>
-        </section>
-      </li>
-    <% end %>
-  </ul>
-
-  <% if @links.empty? %><p>No results</p><% end %>
-
 @@ opensearch
   <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
     <ShortName>Go</ShortName>
