@@ -4,6 +4,7 @@ GEM
     daemons (1.1.8)
     erubis (2.7.0)
     eventmachine (0.12.10)
+    pg (0.17.0)
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
@@ -27,6 +28,7 @@ PLATFORMS
 
 DEPENDENCIES
   erubis
+  pg
   sequel
   sinatra
   sinatra-sequel
