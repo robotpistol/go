@@ -3,19 +3,6 @@ require 'sequel'
 require 'sinatra/sequel'
 require 'json'
 
-# Models & migrations
-
-migration 'create links' do
-  database.create_table :links do
-    primary_key :id
-    String :name, :unique => true, :null => false
-    String :url, :unique => false, :null => false
-    Integer :hits, :default => 0
-    DateTime :created_at
-    index :name
-  end
-end
-
 class Link < Sequel::Model
   def hit!
     self.hits += 1
