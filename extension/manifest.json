@@ -1,0 +1,10 @@
+{
+  "name": "go",
+  "description" : "To use, type 'go' plus a search term into the Omnibox.",
+  "version": "1.1",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "omnibox": { "keyword" : "go" },
+  "manifest_version": 2
+}
