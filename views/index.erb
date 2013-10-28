@@ -12,6 +12,12 @@
       </form>
     </div>
     <div class="panel-body">
+      <% if params[:not_found] %>
+      <div class="alert alert-danger">
+        <strong><%= params[:not_found] %></strong> is not a valid go link.
+        Please add it if you think it should be.
+      </div>
+      <% end %>
       <table class="table table-hover table-bordered">
         <% @links.each do |link| %>
           <tr>

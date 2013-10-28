@@ -26,7 +26,7 @@ end
 
 get '/' do
   @links = Link.order(:hits.desc).all
-  erb :index
+  erb :index, params: params
 end
 
 get '/links' do
@@ -82,7 +82,7 @@ end
 
 get '/:name/?*?' do
   link = Link[:name => params[:name]]
-  halt 404 unless link
+  redirect "/?not_found=#{params[:name]}" unless link
   link.hit!
 
   parts = (params[:splat].first || '').split('/')
