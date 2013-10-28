@@ -53,7 +53,7 @@ get '/links/suggest' do
   results = results.all.map {|r| r.name }
 
   content_type :json
-  [query, results].to_json
+  results.to_json
 end
 
 get '/links/search' do
