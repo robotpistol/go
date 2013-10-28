@@ -6,5 +6,8 @@
     "scripts": ["background.js"]
   },
   "omnibox": { "keyword" : "go" },
+  "permissions": [
+    "http://gomarks.herokuapp.com/"
+  ],
   "manifest_version": 2
 }
