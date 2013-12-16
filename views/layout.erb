@@ -13,7 +13,6 @@
           type="text/css"
           media="print, projection, screen">
     <link rel="search" title="Go" href="/links/opensearch.xml" type="application/opensearchdescription+xml"/>
-
     <title>go</title>
   </head>
   <body>
@@ -25,5 +24,12 @@
         $("#linksTable").tablesorter();
       }
     );
+
+    function confirm_remove(link_id) {
+      if(confirm("Do you really want to do delete this link?"))
+        $.post( "/links/" + link_id + "remove");
+      else
+        return false;
+    };
   </script>
 </html>

@@ -38,6 +38,16 @@
               <td><%= link.url %></td>
               <td><%= link.description %></td>
               <td><%= link.hits %></td>
+              <td>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown">
+                    Action <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/links/<%= link.id %>/remove" id="action-">Remove</a></li>
+                  </ul>
+                </div>
+              </td>
             </tr>
           <% end %>
         </tbody>
@@ -46,4 +56,3 @@
     </div>
   </div>
 </div>
-</script>
