@@ -22,7 +22,7 @@
         Please add it if you think it should be.
       </div>
       <% end %>
-      <table class="table table-hover table-striped table-bordered">
+      <table id="linksTable" class="table table-hover table-striped table-bordered tablesorter">
         <thead>
           <tr>
             <th>Alias</th>
@@ -42,8 +42,8 @@
           <% end %>
         </tbody>
       </table>
-
       <% if @links.empty? %><p>No results</p><% end %>
     </div>
   </div>
 </div>
+</script>
