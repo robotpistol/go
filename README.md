@@ -20,7 +20,8 @@ Features:
 ## Usage
 
     bundle install
-    ruby app.rb
+    rake db:migrate
+    rackup
 
 ## Network
 

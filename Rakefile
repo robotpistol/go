@@ -1,9 +1,12 @@
 require "sequel"
 
+DATABASE_URL = ENV['DATABASE_URL'] || 'sqlite://development.db';
+
 namespace :db do
   namespace :migrate do
+
     Sequel.extension :migration
-    DB = Sequel.connect(ENV['DATABASE_URL'])
+    DB = Sequel.connect(DATABASE_URL)
 
     desc "Perform migration reset (full erase and migration up)"
     task :reset do
@@ -32,4 +35,7 @@ namespace :db do
       puts "<= sq:migrate:down executed"
     end
   end
+  task :migrate => 'migrate:up'
 end
+
+

@@ -1,6 +1,7 @@
 require 'sequel'
 
-Sequel.migration 'create links' do
+# 'create links'
+Sequel.migration do
   up do
     create_table :links do
       primary_key :id
