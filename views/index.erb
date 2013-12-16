@@ -8,6 +8,9 @@
         <div class="form-group">
           <input type="url" class="form-control" name="url" placeholder="URL" value="https://" required>
         </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="description" placeholder="Description">
+        </div>
         <button type="submit" class="btn btn-default">Create</button>
       </form>
     </div>
@@ -19,14 +22,25 @@
         Please add it if you think it should be.
       </div>
       <% end %>
-      <table class="table table-hover table-bordered">
-        <% @links.each do |link| %>
+      <table class="table table-hover table-striped table-bordered">
+        <thead>
           <tr>
-            <td><a href="/<%= link.name %>"><%= link.name %></a></td>
-            <td><%= link.url %></td>
-            <td><%= link.hits %></td>
+            <th>Alias</th>
+            <th>URL</th>
+            <th>Description</th>
+            <th># Hits</th>
           </tr>
-        <% end %>
+        </thead>
+        <tbody>
+          <% @links.each do |link| %>
+            <tr>
+              <td><a href="/<%= link.name %>"><%= link.name %></a></td>
+              <td><%= link.url %></td>
+              <td><%= link.description %></td>
+              <td><%= link.hits %></td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
 
       <% if @links.empty? %><p>No results</p><% end %>

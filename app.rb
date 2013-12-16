@@ -37,7 +37,8 @@ post '/links' do
   begin
     Link.create(
       :name => params[:name].strip,
-      :url  => params[:url].strip
+      :url  => params[:url].strip,
+      :description  => params[:description].strip,
     )
     redirect '/'
   rescue Sequel::ValidationFailed,
