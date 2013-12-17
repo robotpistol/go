@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 ruby "1.9.3"
 
-gem 'sinatra'
+gem 'rake'
 gem 'sequel'
+gem 'sinatra'
 gem 'sinatra-sequel'
-gem 'unicorn'
 gem 'sqlite3'
+gem 'unicorn'
 
