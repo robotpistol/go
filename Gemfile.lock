@@ -2,7 +2,6 @@ GEM
   remote: https://rubygems.org/
   specs:
     kgio (2.8.1)
-    mysql (2.9.1)
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
@@ -26,7 +25,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  mysql
   sequel
   sinatra
   sinatra-sequel
