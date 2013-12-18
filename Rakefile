@@ -1,12 +1,13 @@
 require "sequel"
 
-DATABASE_URL = ENV['DATABASE_URL'] || 'sqlite://development.db';
+database_creds = YAML::load(File.read(File.join(File.dirname(__FILE__), 'config/database.yml')))
+database = database_creds["airgo_db"]
 
 namespace :db do
   namespace :migrate do
 
     Sequel.extension :migration
-    DB = Sequel.connect(DATABASE_URL)
+    DB = Sequel.connect(database)
 
     desc "Perform migration reset (full erase and migration up)"
     task :reset do
