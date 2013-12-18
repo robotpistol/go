@@ -74,11 +74,27 @@ get '/links/opensearch.xml' do
   erb :opensearch, :layout => false
 end
 
-get '/links/:id/remove' do
+post '/links/:id/remove' do
   link = Link.find(:id => params[:id])
   halt 404 unless link
   link.destroy
   redirect '/'
+end
+
+post '/links/:id/update' do
+  link = Link.find(:id => params[:id])
+  halt 404 unless link
+
+  begin
+    link.name = params[:name]
+    link.description = params[:description]
+    link.url = params[:url]
+    link.save
+    redirect '/'
+  rescue Sequel::ValidationFailed,
+         Sequel::DatabaseError => e
+    halt "Error: #{e.message}"
+  end
 end
 
 get '/:name/?*?' do
