@@ -2,7 +2,6 @@ require 'sinatra'
 require 'sequel'
 require 'sinatra/sequel'
 require 'json'
-require 'uri'
 
 class Link < Sequel::Model
   def hit!
@@ -103,10 +102,13 @@ get '/:name/?*?' do
   redirect "/?not_found=#{params[:name]}" unless link
   link.hit!
 
-  postfix = params[:splat].first
-  url = link.url
+  parts = (params[:splat].first || '').split('/')
+  parts = nil if parts.empty?
 
-  redirect URI.join(url, postfix).to_s
+  url = link.url
+  url %= parts
+
+  redirect url
 end
 
 __END__
