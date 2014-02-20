@@ -38,7 +38,7 @@ end
 
 get '/' do
   @links = Link.order(:hits.desc).all
-  respond_with :index, :name => 'example' do |f|
+  respond_with :index do |f|
     f.html { erb :index, params: params }
     f.json { @links.map(&:to_json).to_json }
   end
@@ -82,11 +82,6 @@ get '/links/search' do
     @links = Link.filter(:name.like("#{query}%"))
     erb :index
   end
-end
-
-get '/links/opensearch.xml' do
-  content_type :xml
-  erb :opensearch, :layout => false
 end
 
 post '/links/:id/remove' do
