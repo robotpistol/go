@@ -74,13 +74,11 @@ end
 
 get '/links/search' do
   query = params[:q]
-  link  = Link[:name => query]
+  @links = Link.filter(:name.like("#{query}%")).order(:hits.desc).all
 
-  if link
-    redirect "/#{link.name}"
-  else
-    @links = Link.filter(:name.like("#{query}%"))
-    erb :index
+  respond_with :index do |f|
+    f.html { erb :index, params: params }
+    f.json { @links.map(&:to_json).to_json }
   end
 end
 
