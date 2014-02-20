@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sequel'
 require 'sinatra/sequel'
+require 'sinatra/respond_with'
 require 'json'
 
 class Link < Sequel::Model
@@ -14,8 +15,19 @@ class Link < Sequel::Model
     errors.add(:name, 'cannot be empty') if !name || name.empty?
     errors.add(:url, 'cannot be empty') if !url || url.empty?
   end
+
+  def to_json
+    {
+      name: self.name,
+      url: self.url,
+      description: self.description,
+      hits: self.hits,
+    }
+  end
+  
 end
 
+# Configuration 
 
 configure do
   set :erb, :escape_html => true
@@ -26,7 +38,10 @@ end
 
 get '/' do
   @links = Link.order(:hits.desc).all
-  erb :index, params: params
+  respond_with :index, :name => 'example' do |f|
+    f.html { erb :index, params: params }
+    f.json { @links.map(&:to_json).to_json }
+  end
 end
 
 get '/links' do
