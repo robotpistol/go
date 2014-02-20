@@ -24,10 +24,10 @@ class Link < Sequel::Model
       hits: self.hits,
     }
   end
-  
+
 end
 
-# Configuration 
+# Configuration
 
 configure do
   set :erb, :escape_html => true
