@@ -35,7 +35,7 @@
           <% @links.each do |link| %>
             <tr id="link<%= link.id %>" data-link-id="<%= link.id %>">
               <td id="alias"><a href="/<%= link.name %>"><%= link.name %></a></td>
-              <td id="url"><%= link.url %></td>
+              <td id="url"><div class="ellipsis"><%= link.url %></div></td>
               <td id="description"><%= link.description %></td>
               <td><%= link.hits %></td>
               <td>
