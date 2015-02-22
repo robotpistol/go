@@ -107,14 +107,21 @@ end
 
 get '/:name/?*?' do
   link = Link[:name => params[:name]]
-  redirect "/?not_found=#{params[:name]}" unless link
-  link.hit!
+  if link
+    link.hit!
 
-  parts = (params[:splat].first || '').split('/')
-  parts = nil if parts.empty?
+    parts = (params[:splat].first || '').split('/')
+    parts = nil if parts.empty?
 
-  url = link.url
-  url %= parts
+    url = link.url
+    url %= parts
 
-  redirect url
+    redirect url
+  else
+    @links = Link.order(:hits.desc).all
+    params[:not_found] = params[:name]
+    respond_with :index do |f|
+      f.html { erb(:index, params: params) }
+    end
+  end
 end
