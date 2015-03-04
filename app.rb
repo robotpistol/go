@@ -106,8 +106,8 @@ post '/links/:id/update' do
 end
 
 get '/:name/?*?' do
-  link = Link[:name => params[:name] + '/' + params[:splat].first]
-  params[:splat] = '' if link # remove the splat so we don't reuse it
+  link = Link[:name => [params[:name], params[:splat].first].join('/')]
+  params[:splat] = [''] if link # remove the splat so we don't reuse it
 
   # Just try the straight link if we didn't find a matching link
   link ||= Link[:name => params[:name]]
