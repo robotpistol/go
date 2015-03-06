@@ -123,8 +123,15 @@ get '/:name/?*?' do
 
     redirect url
   else
-    @links = Link.order(:hits.desc).all
-    params[:not_found] = params[:name]
+    # try to list sub-links of the namespace
+    filtered_links = Link.filter(:name.like("#{params[:name]}%")).order(:hits.desc).all
+    if filtered_links.empty?
+      @links = Link.order(:hits.desc).all
+      params[:not_found] = params[:name]
+    else
+      @links = filtered_links
+      params[:links_filter] = params[:name]
+    end
     respond_with :index do |f|
       f.html { erb(:index, params: params) }
     end
