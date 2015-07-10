@@ -4,7 +4,7 @@
 
 .ellipsis {
   text-overflow: ellipsis;
-  width: 800px;
+  width: 500px;
 
   /* Required for text-overflow to do anything */
   white-space: nowrap;
