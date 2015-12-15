@@ -3,14 +3,9 @@
   <head>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/vendor/tablesorter/jquery.tablesorter.min.js"></script>
 
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet"
-          href="/vendor/tablesorter/themes/blue/style.css"
-          type="text/css"
-          media="print, projection, screen">
     <link rel="search"
           title="Go"
           href="/links/opensearch.xml"
@@ -20,11 +15,4 @@
   <body>
     <article><%= yield %></article>
   </body>
-  <script>
-    $(document).ready(function()
-      {
-        $("#linksTable").tablesorter();
-      }
-    );
-  </script>
 </html>
