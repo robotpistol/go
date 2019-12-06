@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require './app/db.rb'
 
 namespace :db do
   namespace :migrate do
