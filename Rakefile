@@ -1,43 +1,32 @@
-require "sequel"
-require "yaml"
-
-database_creds = YAML::load(File.read(File.join(File.dirname(__FILE__), 'config/database.yml')))
-database = database_creds["airgo_db"]
+# frozen_string_literal: true
 
 namespace :db do
   namespace :migrate do
+    Sequel.extension(:migration)
 
-    Sequel.extension :migration
-    DB = Sequel.connect(database)
-
-    desc "Perform migration reset (full erase and migration up)"
-    task :reset do
-      Sequel::Migrator.run(DB, "migrations", :target => 0)
-      Sequel::Migrator.run(DB, "migrations")
-      puts "<= sq:migrate:reset executed"
+    desc 'Perform migration reset (full erase and migration up)'
+    task reset: %i[down up] do
     end
 
-    desc "Perform migration up/down to VERSION"
+    desc 'Perform migration up/down to VERSION'
     task :to do
-      version = ENV['VERSION'].to_i
-      raise "No VERSION was provided" if version.nil?
-      Sequel::Migrator.run(DB, "migrations", :target => version)
+      raise 'No VERSION was provided' if ENV['VERSION'].nil?
+
+      Sequel::Migrator.run(DB, 'migrations', target: ENV['VERSION'].to_i)
       puts "<= sq:migrate:to version=[#{version}] executed"
     end
 
-    desc "Perform migration up to latest migration available"
+    desc 'Perform migration up to latest migration available'
     task :up do
-      Sequel::Migrator.run(DB, "migrations")
-      puts "<= sq:migrate:up executed"
+      Sequel::Migrator.run(DB, 'migrations')
+      puts '<= sq:migrate:up executed'
     end
 
-    desc "Perform migration down (erase all data)"
+    desc 'Perform migration down (erase all data)'
     task :down do
-      Sequel::Migrator.run(DB, "migrations", :target => 0)
-      puts "<= sq:migrate:down executed"
+      Sequel::Migrator.run(DB, 'migrations', target: 0)
+      puts '<= sq:migrate:down executed'
     end
   end
-  task :migrate => 'migrate:up'
+  task migrate: 'migrate:up'
 end
-
-

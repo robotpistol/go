@@ -11,7 +11,7 @@ mysql: &airgo_mysql
   adapter: mysql2
   username: airgo
   database: airgo
-  host: localhost
+  host: go_db
   port: 3306
   password: password
 airgo_db:

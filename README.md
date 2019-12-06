@@ -35,3 +35,5 @@ to the relevant destination. You can make 'go' resolve in one of two ways.
    searched when resolving urls. For example, you could set a 'Search Domain'
    to be `mycompany.local`, and then create the CNAME `go.mycompany.local`.
    Then, 'go' would always resolve to whatever server the CNAME points to.
+
+[![Build Status](https://badge.buildkite.com/3dd8e9144235d9570915ea53bd50aeaaf8917e8b63d70dab3d.svg)](https://buildkite.com/robotpistol/go)
