@@ -13,7 +13,7 @@ services:
       - '8080:8080'
     expose:
       - 8080
-    command: 'bundle exec unicorn config.ru'
+    command: bash bin/start.sh
     volumes:
       - .:/app
       - bundle-cache:/usr/local/bundle

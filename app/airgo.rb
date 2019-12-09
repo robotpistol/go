@@ -17,7 +17,7 @@ end
 
 # Actions
 
-get '/' do
+get '/', provides: %w'text/html application/json' do
   @links = Link.order(Sequel.desc(:hits)).all
   respond_with :index do |f|
     f.html { erb :index, params: params }
@@ -44,10 +44,9 @@ end
 get '/links/suggest' do
   query = params[:q]
 
-  results =
-    Link
-    .filter(Sequel.ilike(:name, "#{query}%"))
-    .or(Sequel.ilike(:url, "%#{query}%"))
+  results = Link
+            .filter(Sequel.ilike(:name, "#{query}%"))
+            .or(Sequel.ilike(:url, "%#{query}%"))
   results = results.all.map(&:name)
 
   content_type :json
