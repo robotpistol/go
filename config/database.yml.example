@@ -1,19 +1,16 @@
 # Used this to configure sqlite
 # Point this to the configuration above that you wish to use
-sqlite: &airgo_sqlite
-  adapter: sqlite
-  database: development.db
-  verbosity: quiet
+#sqlite:
+#  adapter: sqlite
+#  database: development.db
+#  verbosity: quiet
 # Use this to configure mysql
-mysql: &airgo_mysql
+airgo_db:
   encoding: utf8
   reconnect: true
   adapter: mysql2
   username: airgo
   database: airgo
-  host: localhost
+  host: go_db
   port: 3306
   password: password
-airgo_db:
-  <<: *airgo_sqlite
-

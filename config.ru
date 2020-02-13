@@ -1,11 +1,5 @@
-require 'sequel'
-require 'yaml'
+# frozen_string_literal: true
 
-database_creds = YAML::load(File.read(File.join(File.dirname(__FILE__), 'config/database.yml')))
-database = database_creds["airgo_db"]
-
-Sequel.connect(database)
-
-require './app'
+require './app/airgo'
 
 run Sinatra::Application

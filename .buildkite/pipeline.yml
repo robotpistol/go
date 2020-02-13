@@ -2,3 +2,10 @@ steps:
   - label: "bundle installs"
     commands:
       - bundle install
+  - label: ":rspec:"
+    commands:
+      - bundle exec rake db:migrate
+      - bundle exec rspec --color
+  - label: ":rubocop:"
+    commands:
+      - bundle exec rubocop

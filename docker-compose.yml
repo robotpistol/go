@@ -1,0 +1,38 @@
+version: '3.3'
+
+services:
+  airgo:
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    links:
+     - go_db
+    ports:
+      - '8080:8080'
+    expose:
+      - 8080
+    command: bash bin/start.sh
+    volumes:
+      - .:/app
+      - bundle-cache:/usr/local/bundle
+
+  go_db:
+    image: mysql:5.5
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    restart: always
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    environment:
+      MYSQL_DATABASE: 'airgo'
+      MYSQL_USER: 'airgo'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: example
+
+volumes:
+  bundle-cache:
+  my-db:
