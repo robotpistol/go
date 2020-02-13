@@ -14,5 +14,9 @@ up:
 
 bundle: #: Run a bundle install on the container
 	docker-compose run --rm $(SERVICE) bundle install --with=development test
+
 bash:
 	docker-compose exec $(SERVICE) bash
+
+log:
+	docker-compose logs $(SERVICE)

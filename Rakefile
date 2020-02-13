@@ -1,6 +1,8 @@
 # frozen_string_literal: true
+
 require './app/db.rb'
 
+# Add in migration extension
 migration_path = 'app/migrations'
 
 namespace :db do
